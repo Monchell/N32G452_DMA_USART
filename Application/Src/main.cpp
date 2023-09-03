@@ -2,7 +2,7 @@
  * @file main.cpp
  * @author Monchell
  * @version v1.0.0
- *
+ * @brief 串口DMA接受实验，包含一个串口DMA接收，同时DMA中断把接收到的数据转发给指定任务然后在发回给串口，也就是数据转发
  * @copyright free
  */
 #include "main.h"
@@ -12,9 +12,7 @@
 #include "timer.h"
 #include "FreeRTOS.h"
 #include "task.h"
-#include "stack_check.h"
-
-
+#include "deliver_information.h"
 /**
  * @brief Assert failed function by user.
  * @param file The name of the call that failed.
@@ -31,20 +29,15 @@ void assert_failed(const uint8_t* expr, const uint8_t* file, uint32_t line)
 
 
 
-/** 任务优先级 */
+/** 开始任务优先级 */
 #define START_TASK_PRIO					1
-#define RECURSION_TASK_PRIO			2
-#define STACKCHECK_TASK_PRIO		2
 
-/** 任务堆栈大小 */
+/** 开始任务堆栈大小 */
 #define START_TASK_SIZE 				64  
-#define RECURSION_TASK_SIZE 		64
-#define STACKCHECK_TASK_SIZE 		64
 
 /** 初始任务句柄 */
 TaskHandle_t Start_Task_Handler;
-TaskHandle_t Recursion_Task_Handler;
-TaskHandle_t Stackcheck_Task_Handler;
+TaskHandle_t Deliver_information_Task_Handler;
 
 
 /** 初始任务函数 */
@@ -76,19 +69,14 @@ void start_task(void *pvParameters)
 {
     taskENTER_CRITICAL();           //进入临界区
     //创建LED0任务
-    xTaskCreate((TaskFunction_t )recursion_task,     	
-                (const char*    )"recursion_task",   	
-                (uint16_t       )RECURSION_TASK_SIZE,
+	
+    xTaskCreate((TaskFunction_t )deliver_information_task,     	
+                (const char*    )"deliver_information_task",   	
+                (uint16_t       )DELIVER_INFORMATION_TASK_SIZE,
                 (void*          )NULL,				
-                (UBaseType_t    )RECURSION_TASK_PRIO,	
-                (TaskHandle_t*  )&Recursion_Task_Handler);   
+                (UBaseType_t    )DELIVER_INFORMATION_TASK_PRIO,	
+                (TaskHandle_t*  )&Deliver_information_Task_Handler);   
 								
-    xTaskCreate((TaskFunction_t )stackcheck_task,     	
-                (const char*    )"stackcheck_task",   	
-                (uint16_t       )STACKCHECK_TASK_SIZE, 
-                (void*          )&Recursion_Task_Handler,				
-                (UBaseType_t    )STACKCHECK_TASK_PRIO,	
-                (TaskHandle_t*  )&Stackcheck_Task_Handler);   
 								
     vTaskDelete(Start_Task_Handler); //删除开始任务
     taskEXIT_CRITICAL();            //退出临界区

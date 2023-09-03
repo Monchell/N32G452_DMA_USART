@@ -1,11 +1,14 @@
+/**
+ * @file timer.c
+ * @author Monchell
+ * @version v1.0.0
+ * @brief 包含操作系统的systick的配置以及延时函数的配置
+ * @note 移植到工程里面可以直接使用的
+ * @copyright free
+ */
 #include "timer.h"
 #include "Freertos.h"
 #include "task.h"
-/**
- * @brief  Configures the different system clocks.
- * 包含操作系统的systick的配置以及延时函数的配置
- */
- 
 
 /**
  * @brief 初始化SYSTICK,并且配置延时函数
@@ -86,6 +89,20 @@ void NZ_Delay_xms(u32 nms)
 {
 		u32 i;
 		for(i=0;i<nms;i++) NZ_Delay_us(1000);  
+}
+
+
+
+/**
+ * @brief  This function handles SysTick Handler.
+ */
+extern void xPortSysTickHandler(void);
+void SysTick_Handler(void)
+{
+	if(xTaskGetSchedulerState()!=taskSCHEDULER_NOT_STARTED)// 系统已经运行
+	{
+		xPortSysTickHandler();
+	}
 }
 
 

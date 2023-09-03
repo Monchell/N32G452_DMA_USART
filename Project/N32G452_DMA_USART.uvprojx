@@ -577,11 +577,6 @@
               <FileType>8</FileType>
               <FilePath>..\Application\Src\deliver_information.cpp</FilePath>
             </File>
-            <File>
-              <FileName>deliver_information.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Application\Inc\deliver_information.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

@@ -130,22 +130,6 @@ void DMA_IRQ_HANDLER(void)
 {
 }
 
-int myms = 0;
-int mys = 0;
-void TIM2_IRQHandler(void)
-{
-	if(TIM_GetIntStatus(TIM2, TIM_INT_UPDATE) != RESET)
-	{
-		TIM_ClrIntPendingBit(TIM2,TIM_INT_UPDATE);
-		myms++;
-		if(myms >= 1000)
-		{
-			mys++;
-			myms =0;
-		}
-	}
-	
-}
 /******************************************************************************/
 /*                 N32G45X Peripherals Interrupt Handlers                     */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */

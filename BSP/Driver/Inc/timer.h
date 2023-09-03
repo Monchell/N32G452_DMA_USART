@@ -12,7 +12,6 @@
 extern "C" {
 #endif
 #include "n32g45x.h"
-void mc_timer2_init(void);
 void NZ_Delay_init(void);
 void NZ_Delay_us(u32 nus);
 void NZ_Delay_ms(u32 nms);

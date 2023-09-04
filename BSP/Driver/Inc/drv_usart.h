@@ -39,21 +39,23 @@ void uartx_init(USART_Module* USARTx, uint32_t uiBaudRate);
 
 
 /*以下为USARTx DMA相关配置*/
-#define USARTx_Tx_DMA_Channel       DMA_CH4
-#define USARTx_Tx_DMA_FLAG          DMA_FLAG_TC4
-#define USARTx_Tx_DMA_IRQn          DMA_Channel3_4_IRQn
-#define USARTx_Tx_DMA_IRQHandler    DMA_Channel3_4_IRQHandler
-#define USARTx_Tx_DMA_INT           DMA_INT_TXC4
-#define USARTx_Rx_DMA_Channel       DMA_CH5
-#define USARTx_Rx_DMA_FLAG          DMA_FLAG_TC5
-#define USARTx_Rx_DMA_IRQn          DMA_Channel5_IRQn
-#define USARTx_Rx_DMA_IRQHandler    DMA_Channel5_IRQHandler
-#define USARTx_Rx_DMA_INT           DMA_INT_TXC5
-#define USARTx_Tx_DMA_REMAP         DMA_REMAP_USART1_TX
-#define USARTx_Rx_DMA_REMAP         DMA_REMAP_USART1_RX
+#define USART1_Tx_DMA_Channel       DMA1_CH4
+#define USART1_Tx_DMA_FLAG          DMA1_FLAG_TC4
+#define USART1_Tx_DMA_IRQn          DMA1_Channel4_IRQn														
+#define USART1_Tx_DMA_IRQHandler    DMA1_Channel4_IRQHandler
+#define USART1_Tx_DMA_INT           DMA1_INT_TXC4
+#define USART1_Tx_DMA_REMAP         DMA1_REMAP_USART1_TX
 
-void uart_dma_init(void);
-void uartx_send_data(uint16_t Length);
+
+#define USART1_Rx_DMA_Channel       DMA1_CH5
+#define USART1_Rx_DMA_FLAG          DMA1_FLAG_TC5
+#define USART1_Rx_DMA_IRQn          DMA1_Channel5_IRQn
+#define USART1_Rx_DMA_IRQHandler    DMA1_Channel5_IRQHandler
+#define USART1_Rx_DMA_INT           DMA1_INT_TXC5
+#define USART1_Rx_DMA_REMAP         DMA1_REMAP_USART1_RX
+
+void uart1_dma_init(void);
+void uartx_send_data(uint8_t* send_data, uint16_t Length);
 
 #ifdef __cplusplus
 }

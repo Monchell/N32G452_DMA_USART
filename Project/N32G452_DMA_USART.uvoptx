@@ -152,34 +152,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>57</LineNumber>
+          <LineNumber>156</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134221520</Address>
+          <Address>134218404</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Application\Src\main.cpp</Filename>
+          <Filename>..\BSP\Driver\Src\drv_usart.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\N32G452_DMA_USART\../Application/Src/main.cpp\57</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>29</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\Application\Src\deliver_information.cpp</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\N32G452_DMA_USART\../BSP/Driver/Src/drv_usart.c\156</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -213,7 +197,32 @@
           <WinNumber>1</WinNumber>
           <ItemText>overflowed</ItemText>
         </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>usart1_rx_buf[USART1_MAX_UART_RXBUF]</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>usart1_tx_buf[USART1_MAX_UART_TXBUF]</ItemText>
+        </Ww>
       </WatchWindow1>
+      <WatchWindow2>
+        <Ww>
+          <count>0</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>usart1_rx_buf[USART1_MAX_UART_RXBUF]</ItemText>
+        </Ww>
+      </WatchWindow2>
+      <MemoryWindow1>
+        <Mm>
+          <WinNumber>1</WinNumber>
+          <SubType>0</SubType>
+          <ItemText>usart1_rx_buf[USART1_MAX_UART_RXBUF]</ItemText>
+          <AccSizeX>0</AccSizeX>
+        </Mm>
+      </MemoryWindow1>
       <MemoryWindow2>
         <Mm>
           <WinNumber>2</WinNumber>

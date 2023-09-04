@@ -20,12 +20,18 @@
  * @brief 任务,转发串口信息
  * @param pvParameters：任务参数，无
  */
+
 int i;
 void deliver_information_task(void *pvParameters)
 {
 	while(1)		
-	{		
+	{	
+		printf("11111\n");
 		NZ_Delay_ms(1000);
+		//USART_SendData(USART1, 1);		
+		//while (USART_GetFlagStatus(USART1, USART_FLAG_TXDE) == RESET)		
+		//USART_SendData(USART1, 2);		
+		
 		i++;
 	}
 }

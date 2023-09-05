@@ -47,6 +47,8 @@ void start_task(void *pvParameters);
 
 RCC_ClocksType rcc_clock;//获取时钟分频情况
 
+
+void usart1_callback(uint16_t len, uint8_t* rev_num);
 /**
  * @brief  Main program.
  */
@@ -54,8 +56,7 @@ int main(void)
 {
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//中断分组设置
 	RCC_GetClocksFreqValue(&rcc_clock);//获取时钟树的时钟频率（拿来看看）
-	uart1_dma_init();
-	uartx_init(USART1,230400);	
+	uartx_init(USART1,230400, usart1_callback);	
 	//printf("11111\n");	
 	NZ_Delay_init();//时钟初始化
 	//while (USART_GetFlagStatus(USART1, USART_FLAG_TXDE) == RESET)		
@@ -87,6 +88,12 @@ void start_task(void *pvParameters)
 								
     vTaskDelete(Start_Task_Handler); //删除开始任务
     taskEXIT_CRITICAL();            //退出临界区
+}
+
+
+void usart1_callback(uint16_t len, uint8_t* rev_num)
+{
+	uartx_send_data(USART1,rev_num,len);
 }
 
 /**

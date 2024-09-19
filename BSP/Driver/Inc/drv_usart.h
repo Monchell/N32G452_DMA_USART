@@ -14,7 +14,6 @@
  * 如何发送数据？
  * 	调用void uartx_send_data(USART_Module* USARTx, uint8_t* send_data, uint16_t Length)发送数据
  * 该文件还实现了串口重定向，也即是printf函数，在宏定义里面可以指定重定向的串口，注意需要开启microlib
- * 
  * @copyright free
  */
 
@@ -58,7 +57,7 @@ typedef void (* usart_callback)(uint16_t, uint8_t*);
 #define USART1_MAX_UART_TXBUF                 256    
 
 
-/*以下为USART1 DMA相关配置*/
+/*以下为USART1 DMA相关配置，使用了DMA1CH4和DMA1CH5来做收发的DMA*/
 #define USART1_Tx_DMA_Channel       DMA1_CH4
 #define USART1_Tx_DMA_FLAG          DMA1_FLAG_TC4
 #define USART1_Tx_DMA_IRQn          DMA1_Channel4_IRQn														

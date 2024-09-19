@@ -75,9 +75,8 @@ int main(void)
 void start_task(void *pvParameters)
 {
     taskENTER_CRITICAL();           //进入临界区
-    //创建LED0任务
 	
-	
+		//创建自己的任务
     xTaskCreate((TaskFunction_t )deliver_information_task,     	
                 (const char*    )"deliver_information_task",   	
                 (uint16_t       )DELIVER_INFORMATION_TASK_SIZE,
